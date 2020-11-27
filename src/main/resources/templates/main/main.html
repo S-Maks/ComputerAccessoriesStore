@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fonts.css}" >
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"  />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a class="a-link-margin" th:href="@{/} "><img th:src = "@{/img/icon.png}" class="logo"></a>
+                <ul>
+                    <li ><a class="a-link-margin" th:href="@{/signIn}">Sign In</a></li>
+                    <li ><a class="a-link-margin" th:href="@{/signUp}">Sign Up</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+</body>
+</html>
