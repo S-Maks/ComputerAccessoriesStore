@@ -9,6 +9,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -28,4 +33,10 @@ public class UserServiceImpl implements UserService {
                 .build();
         userRepository.save(user);
     }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
 }

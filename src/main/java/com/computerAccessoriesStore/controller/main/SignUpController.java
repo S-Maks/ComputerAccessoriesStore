@@ -1,4 +1,4 @@
-package com.computerAccessoriesStore.controller;
+package com.computerAccessoriesStore.controller.main;
 
 import com.computerAccessoriesStore.models.enums.Role;
 import com.computerAccessoriesStore.service.UserService;

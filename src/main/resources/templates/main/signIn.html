@@ -10,7 +10,6 @@
 </head>
 <body class="limiter">
 <div >
-
     <div class="container">
         <div class="navbar">
             <a class="a-link-margin" th:href="@{/} "><img th:src="@{/img/icon.png}" class="logo"></a>
@@ -21,6 +20,11 @@
             <div th:if = "${param.error}" class="incorrect">
                 Invalid Username or Password
             </div>
+
+            <div th:if = "${param.logout}" class="incorrect">
+                You are logged out of the system
+            </div>
+
             <form class="login100-form validate-form" th:action="@{/signIn}" method="post">
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
                     <input class="input100" type="text" placeholder="Username" id="username" name="username">

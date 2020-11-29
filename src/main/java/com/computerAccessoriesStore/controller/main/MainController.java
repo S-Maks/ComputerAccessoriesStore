@@ -1,4 +1,4 @@
-package com.computerAccessoriesStore.controller;
+package com.computerAccessoriesStore.controller.main;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,22 +17,8 @@ public class MainController {
         return "main/main";
     }
 
-    @GetMapping("/signIn")
-    public String loginPage(Authentication authentication, ModelMap model, HttpServletRequest request) {
-        if (request.getParameterMap().containsKey("error")) {
-            model.addAttribute("error", true);
-        }
-        if (authentication == null) {
-            return "main/signIn";
-        } else {
-            return "redirect:/home";
-        }
-
-    }
-
     @GetMapping("/home")
     public String homePage() {
         return "main/home";
     }
-
 }
