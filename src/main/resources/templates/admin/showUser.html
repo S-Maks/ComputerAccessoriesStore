@@ -12,6 +12,11 @@
 <div class="container">
     <div class="navbar">
         <a class="a-link-margin" th:href="@{/} "><img th:src="@{/img/icon.png}" class="logo"></a>
+        <ul class="p-l-500">
+            <li ><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
     </div>
 
 
@@ -19,13 +24,13 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>UserName</th>
-            <th>Password</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Имя пользователя</th>
+            <th>Пароль</th>
             <th>Email</th>
-            <th>Created at</th>
-            <th>Role</th>
+            <th>Создан</th>
+            <th>Роль</th>
         </tr>
         </thead>
         <tbody>

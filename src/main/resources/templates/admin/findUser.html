@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<div class="container">
+    <div class="navbar">
+        <a class="a-link-margin" th:href="@{/} "><img th:src="@{/img/icon.png}" class="logo"></a>
+        <ul class="p-l-500">
+            <li ><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five" th:utext="#{findseller.title}"></h1>
+    <form th:action="@{/admin/findUser}" method="get">
+
+        <input class="search" type="text" name="search" th:value="${search}" th:placeholder='#{placeholder.title}'>
+
+        <div th:if="${#lists.isEmpty(result)}" class="c-label incorrect" th:utext="#{nothingfound.title}"></div>
+        <div th:if="${not #lists.isEmpty(result)}">
+            <h1 class="c-text-h1" th:utext="#{result.title}"></h1>
+            <div class="table-container">
+                <table>
+                    <tbody>
+                    <tr th:each="findUser: ${result}">
+                        <td th:utext="${findUser.firstName}"></td>
+                        <td th:utext="${findUser.lastName}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -15,7 +15,7 @@
             <a class="a-link-margin" th:href="@{/} "><img th:src="@{/img/icon.png}" class="logo"></a>
             <ul class="p-l-500">
                 <li ><a class="a-link-margin" th:href="@{/logout}">
-                        Sign Out
+                        Выход
                     </a></li>
             </ul>
         </div>
@@ -25,15 +25,22 @@
 
        <div class="container-login100">
            <div class="wrap-login100 p-t-60 p-b-30">
-               <ul>
+               <ul >
                   <li >
                       <a th:href="@{/admin/showUser}" >
                           <div class = "centerHorizon centerVertical buttonMenu">
-                              Show Users
+                              Просмотр Пользователей
                           </div>
-
                       </a>
                   </li>
+                   <li style="margin-left: 20px">
+                       <a th:href="@{/admin/findUser}">
+                           <div class="centerVertical centerHorizon buttonMenu">
+                               Найти Пользователя
+                           </div>
+
+                       </a>
+                   </li>
                </ul>
            </div>
        </div>
