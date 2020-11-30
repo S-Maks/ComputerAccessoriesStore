@@ -11,9 +11,9 @@
 <body class="limiter">
 <div class="container">
     <div class="navbar">
-        <a class="a-link-margin" th:href="@{/} "><img th:src="@{/img/icon.png}" class="logo"></a>
+        <a class="a-link-margin" th:href="@{/} ">На главную</a>
         <ul class="p-l-500">
-            <li ><a class="a-link-margin" th:href="@{/logout}">
+            <li><a class="a-link-margin" th:href="@{/logout}">
                 Выход
             </a></li>
         </ul>
@@ -22,25 +22,46 @@
 
 
 <div class="text-center">
-    <h1 class="c-text-h1 margin-five" th:utext="#{findseller.title}"></h1>
+    <h1 class="c-text-h1 margin-five">Поиск пользователей</h1>
     <form th:action="@{/admin/findUser}" method="get">
 
-        <input class="search" type="text" name="search" th:value="${search}" th:placeholder='#{placeholder.title}'>
+        <input class="search" type="text" name="search" th:value="${search}"
+               placeholder="Поиск по имени, фамилии или имени пользователя">
 
-        <div th:if="${#lists.isEmpty(result)}" class="c-label incorrect" th:utext="#{nothingfound.title}"></div>
+        <div th:if="${#lists.isEmpty(result)}" class="c-label incorrect">Ничего не найдено!</div>
+
         <div th:if="${not #lists.isEmpty(result)}">
-            <h1 class="c-text-h1" th:utext="#{result.title}"></h1>
+            <h1 class="c-text-h1">Найденные пользователи</h1>
             <div class="table-container">
                 <table>
+                    <thead>
+                    <tr>
+                        <th class="a-link-no-margin">Id</th>
+                        <th class="a-link-no-margin">Имя</th>
+                        <th class="a-link-no-margin">Фамилия</th>
+                        <th class="a-link-no-margin">Пользователь</th>
+                        <th class="a-link-no-margin">Пароль</th>
+                        <th class="a-link-no-margin">Email</th>
+                        <th class="a-link-no-margin">Создан</th>
+                        <th class="a-link-no-margin">Роль</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     <tr th:each="findUser: ${result}">
-                        <td th:utext="${findUser.firstName}"></td>
-                        <td th:utext="${findUser.lastName}"></td>
+                        <td><a th:text="${findUser.id}"></a></td>
+                        <td th:utext="${findUser.firstName}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.lastName}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.username}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.password}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.email}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.created_at}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.role}" class="a-link-no-margin"></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </form>
+</div>
 </body>
 </html>

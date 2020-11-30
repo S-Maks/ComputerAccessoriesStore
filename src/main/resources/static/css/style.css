@@ -17,8 +17,7 @@ button {
 }
 
 .c-text-h1 {
-    color: #2c302f;
-    font-family: "Montserrat";
+    color: #606665;
     font-size: 2.25rem;
     font-weight: 800;
 }
@@ -131,19 +130,49 @@ a {
 .a-link-no-margin {
     font-family: "Source Sans Pro Regular";
     text-align: left;
-    padding: 6px;
+    padding: 15px;
+}
+.table-container {
+    padding: 2% 20%;
+    font-size: 18px;
 }
 
 .logo {
-    margin-left: 270px;
+    margin-left: 20px;
     height: 35px;
     width: 35px;
 }
 .logo:hover{
-    transform: rotate(360deg);
     transition: 2s;
 }
 
 img {
     margin-top: 3.5%;
+}
+th{
+    background-color: #1c9f8a;
+    color: white;
+}
+
+th, td{
+    text-align: left;
+    padding: 8px;
+}
+td{
+background-color: white;
+    color: #606665;
+}
+table{
+    border-spacing:0px 2px;
+}
+.search {
+    font-size: 1.2rem;
+    padding: 0.2%;
+    border: #1c9f8a;
+    margin: 1%;
+    width: 462px;
+    height: 50px;
+    border-radius: 25px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
