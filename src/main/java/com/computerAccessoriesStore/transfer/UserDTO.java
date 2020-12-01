@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.Setter;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import javax.persistence.Entity;
 import java.sql.Date;
 
 @Data

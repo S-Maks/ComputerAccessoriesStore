@@ -31,6 +31,7 @@
             <th class="a-link-no-margin">Email</th>
             <th class="a-link-no-margin">Создан</th>
             <th class="a-link-no-margin">Роль</th>
+            <th class="a-link-no-margin"></th>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@
             <td th:utext="${user.email}" class="a-link-no-margin"></td>
             <td th:utext="${user.created_at}" class="a-link-no-margin"></td>
             <td th:utext="${user.role}" class="a-link-no-margin"></td>
+            <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/editUser?id=' + ${user.id}"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
         </tr>
         </tbody>
     </table>

@@ -34,13 +34,22 @@
                       </a>
                   </li>
                    <li style="margin-left: 20px">
-                       <a th:href="@{/admin/findUser}">
-                           <div class="centerVertical centerHorizon buttonMenu">
-                               Найти Пользователя
+                       <a th:href="@{/admin/findUser}"><div class="centerVertical centerHorizon buttonMenu">Найти Пользователя</div>
+                       </a>
+                   </li><br>
+               </ul>
+               <ul >
+                   <li >
+                       <a th:href="@{/admin/editUser}" >
+                           <div class = "centerHorizon centerVertical buttonMenu">
+                               Блокировка Пользователя
                            </div>
-
                        </a>
                    </li>
+                   <li style="margin-left: 20px">
+                       <a th:href="@{/admin/deleteUser}"><div class="centerVertical centerHorizon buttonMenu">Удаление Пользователя</div>
+                       </a>
+                   </li><br>
                </ul>
            </div>
        </div>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -23,13 +24,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void add(UserDTO dto){
         User user = User.builder()
+                .created_at(dto.getCreated_at())
+                .email(dto.getEmail())
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
-                .username(dto.getUsername())
                 .password(dto.getPassword())
-                .email(dto.getEmail())
                 .role(dto.getRole())
-                .created_at(dto.getCreated_at())
+                .username(dto.getUsername())
                 .build();
         userRepository.save(user);
     }
@@ -39,4 +40,39 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public List<User> getSellersGeneralInfoByParam(String param){
+        return StreamSupport.stream(userRepository
+                .findAll().spliterator(), false)
+                .filter(user -> user.getFirstName().contains(param)
+                        || user.getLastName().contains(param)
+                        || user.getUsername().contains(param))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public void edit(UserDTO dto) {
+        User user = User.builder()
+                .created_at(dto.getCreated_at())
+                .email(dto.getEmail())
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .password(dto.getPassword())
+                .role(dto.getRole())
+                .username(dto.getUsername())
+                .id(dto.getId())
+                .build();
+        userRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> getById(Long id) {
+        Optional<User> user = userRepository.findById(id) ;
+        return userRepository.findById(id);
+    }
 }

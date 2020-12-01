@@ -176,3 +176,11 @@ table{
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
+.crash-bin{
+    width: 55px;
+    height: 35px;
+}
+.crash-bin:hover{
+    transform: scale(0.9);
+    transition: 300ms;
+}
