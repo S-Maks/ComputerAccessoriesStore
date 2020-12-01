@@ -1,6 +1,7 @@
 package com.computerAccessoriesStore.controller.admin;
 
 import com.computerAccessoriesStore.models.User;
+import com.computerAccessoriesStore.models.enums.Role;
 import com.computerAccessoriesStore.service.UserService;
 import com.computerAccessoriesStore.transfer.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +55,29 @@ public class UserController {
         return "admin/deleteUser";
     }
 
-    @GetMapping(value = "/blocked")
+    @GetMapping(value = "/blockUser")
     public String blockUser(@RequestParam (value = "id", required = false)Long id,  Model model){
         if(id!=null){
-
+            User user = Optional.of(userService.getById(id)).get().get();
+            UserDTO dto = UserDTO.builder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .email(user.getEmail())
+                    .password(user.getPassword())
+                    .created_at(user.getCreated_at())
+                    .username(user.getUsername())
+                    .role(user.getRole())
+                    .build();
+            if(dto.getRole()==Role.ROLE_BLOCKED){
+                dto.setRole(Role.ROLE_BUYER);
+            }else{
+                dto.setRole(Role.ROLE_BLOCKED);
+            }
+            userService.edit(dto);
         }
-        return "admin/blockedUser";
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "admin/blockUser";
     }
 }

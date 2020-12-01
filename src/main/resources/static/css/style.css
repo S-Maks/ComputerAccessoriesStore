@@ -184,3 +184,11 @@ table{
     transform: scale(0.9);
     transition: 300ms;
 }
+.lock{
+    width: 50px;
+    height: 35px;
+}
+.lock:hover{
+    transform: scale(0.9);
+    transition: 300ms;
+}
