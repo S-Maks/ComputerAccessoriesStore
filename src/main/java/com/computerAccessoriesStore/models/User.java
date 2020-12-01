@@ -7,6 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -34,4 +38,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     Role role;
 
+    @OneToMany()
+    private List<Product> products = new ArrayList<>();
 }
