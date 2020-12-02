@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<div class="container">
+    <div class="navbar">
+        <a class="a-link-margin" th:href="@{/} ">На главную</a>
+        <ul class="p-l-500">
+            <li><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<form class="login100-form validate-form" th:action="@{/admin/addProduct}" method="post">
+
+    <div class="wrap-input100 validate-input m-b-10">
+        <input class="input100" type="text" placeholder="Имя товара" id="productName" name="productName">
+    </div>
+
+    <div class="wrap-input100 validate-input m-b-10">
+        <input class="input100" type="text" placeholder="Цена" id="productCost" name="productCost">
+    </div>
+
+    <div class="wrap-input100 validate-input m-b-10">
+        <input class="input100" type="text" placeholder="Id продавца" id="idSeller" name="idSeller">
+    </div>
+
+    <div class="container-login100-form-btn p-t-10">
+        <button class="login100-form-btn">
+            Отправить
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

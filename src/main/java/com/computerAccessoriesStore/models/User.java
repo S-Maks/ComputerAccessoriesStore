@@ -17,11 +17,11 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "Account",schema = "public", catalog = "ComputerAccessoriesStore")
+@Table(name = "account",schema = "public", catalog = "ComputerAccessoriesStore")
 public class User {
     @Id
-    @JoinColumn (name = "id_user")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "iduser")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "first_name")
@@ -39,6 +39,6 @@ public class User {
     Role role;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idProduct")
+    @JoinColumn(name = "idproduct")
     private List<Product> products = new ArrayList<>();
 }

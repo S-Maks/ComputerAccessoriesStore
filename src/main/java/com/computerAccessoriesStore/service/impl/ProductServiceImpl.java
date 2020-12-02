@@ -1,12 +1,16 @@
 package com.computerAccessoriesStore.service.impl;
 
 import com.computerAccessoriesStore.models.Product;
+import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.repository.ProductRepository;
 import com.computerAccessoriesStore.service.ProductService;
+import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,5 +21,28 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public List<Product> getProductsByName(String productName) {
+        return StreamSupport.stream(productRepository
+                .findAll().spliterator(), false)
+                .filter(product -> product.getProduct_name().contains(productName))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void add(ProductDTO dto) {
+        Product product = Product.builder()
+                .product_name(dto.getProductName())
+                .product_cost(dto.getProductCost())
+                .user(User.builder().id(dto.getIdSeller()).build())
+                .build();
+        productRepository.save(product);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
     }
 }

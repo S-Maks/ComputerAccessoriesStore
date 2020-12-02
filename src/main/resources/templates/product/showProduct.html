@@ -24,26 +24,22 @@
     <table>
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Название</th>
-            <th>Цена</th>
-            <th>Id продавца</th>
+            <th class="a-link-no-margin">Id</th>
+            <th class="a-link-no-margin">Название</th>
+            <th class="a-link-no-margin">Цена</th>
+            <th class="a-link-no-margin">Имя пользователя продавца</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product: ${products}">
-            <td><a class="a-link-no-margin" th:href="'/seller/editProduct?id=' + ${product.id}" th:text="${product.id}"></a></td>
+            <td class="a-link-no-margin" th:text="${product.id}"></td>
             <td th:utext="${product.product_name}" class="a-link-no-margin"></td>
             <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
-            <td th:utext="${product.user.id}" class="a-link-no-margin"></td>
+            <td th:utext="${product.user.username}" class="a-link-no-margin"></td>
         </tr>
         </tbody>
     </table>
     </form>
 </div>
-
-
-
-
 </body>
 </html>

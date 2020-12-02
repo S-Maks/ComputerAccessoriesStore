@@ -1,8 +1,11 @@
 package com.computerAccessoriesStore.controller.admin;
 
+import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.models.enums.Role;
+import com.computerAccessoriesStore.service.ProductService;
 import com.computerAccessoriesStore.service.UserService;
+import com.computerAccessoriesStore.transfer.ProductDTO;
 import com.computerAccessoriesStore.transfer.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,9 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    private ProductService productService;
 
     @GetMapping(value = "/showUser")
     public String showUserPage(Model model){
@@ -80,4 +86,27 @@ public class UserController {
         model.addAttribute("users", users);
         return "admin/blockUser";
     }
+
+    @GetMapping("/addProduct")
+    public String registrationPage() {
+        return "product/addProduct";
+    }
+
+    @PostMapping("/addProduct")
+    public String registrationPage(@ModelAttribute ProductDTO dto, BindingResult errors, Model model){
+        productService.add(dto);
+        return "redirect:/product/showProduct";
+    }
+
+    @GetMapping(value = "/deleteProduct")
+    public String deleteProduct(@RequestParam (value = "id", required = false) Long id,  Model model){
+        if(id != null){
+            productService.deleteById(id);
+        }
+        List<Product> products = productService.findAll();
+        model.addAttribute("products", products);
+        return "admin/deleteUser";
+    }//сделать контроллер только post  и добавить редактирование
+
+
 }

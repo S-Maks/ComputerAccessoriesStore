@@ -13,7 +13,7 @@ create table product(
   product_cost FLOAT NOT NULL ,
   product_name VARCHAR(50) NOT NULL ,
   idSeller INT NOT NULL ,
-  FOREIGN KEY (idSeller) references Account(id_user) ON DELETE CASCADE on update CASCADE
+  FOREIGN KEY (idSeller) references Account(idUser) ON DELETE CASCADE on update CASCADE
 );
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
@@ -32,4 +32,6 @@ insert into product(product_cost, product_name, idSeller)
  VALUES (255.0,'Стол',1);
 
 insert into product(product_cost, product_name, idSeller)
-VALUES (1.68,'Молоко',18);
+VALUES (1.68,'Молоко',2);
+
+drop table account, product;

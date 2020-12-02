@@ -13,5 +13,6 @@ public class ProductDTO {
 
     private Long id;
     private String productName;
-    private Long productCost;
+    private Float productCost;
+    private Long idSeller;
 }

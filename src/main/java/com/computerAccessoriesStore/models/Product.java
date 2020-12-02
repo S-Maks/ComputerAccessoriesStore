@@ -13,22 +13,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "Product",schema = "public", catalog = "ComputerAccessoriesStore")
+@Table(name = "product",schema = "public", catalog = "ComputerAccessoriesStore")
 public class Product {
     @Id
-    @JoinColumn(name = "idProduct")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idproduct")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     Float product_cost;
 
     String product_name;
 
-    /*@Column(name = "idseller")
-    Long idSeller;*/
-
     @ManyToOne
-    @JoinColumn(name="idSeller")
+    @JoinColumn(name="idseller")
     private User user;
 
 }
