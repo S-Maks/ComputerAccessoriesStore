@@ -20,8 +20,8 @@ import java.util.Set;
 @Table(name = "Account",schema = "public", catalog = "ComputerAccessoriesStore")
 public class User {
     @Id
-    @Column(name="id_user")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn (name = "id_user")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @Column(name = "first_name")
@@ -38,6 +38,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     Role role;
 
-    @OneToMany()
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idProduct")
     private List<Product> products = new ArrayList<>();
 }

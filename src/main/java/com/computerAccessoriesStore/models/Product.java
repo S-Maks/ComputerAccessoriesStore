@@ -16,8 +16,8 @@ import javax.persistence.*;
 @Table(name = "Product",schema = "public", catalog = "ComputerAccessoriesStore")
 public class Product {
     @Id
-    @Column(name="idproduct")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "idProduct")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     Float product_cost;
@@ -28,7 +28,7 @@ public class Product {
     Long idSeller;*/
 
     @ManyToOne
-    @JoinColumn(name="idseller")
+    @JoinColumn(name="idSeller")
     private User user;
 
 }
