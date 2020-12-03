@@ -13,9 +13,14 @@ import java.sql.Date;
 @EnableJpaRepositories("com.computerAccessoriesStore.*")
 public class ActDTO {
     private Long id;
+
     private Long count;
+
     private Date created_at;
+
     private Long idSeller;
+
     private Long idBuyer;
+
     private Long idProduct;
 }

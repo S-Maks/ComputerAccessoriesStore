@@ -21,7 +21,9 @@ public class Comment {
     private Long id;
 
     private String message;
+
     private int rating;
+
     private Timestamp created_at;
 
     @ManyToOne

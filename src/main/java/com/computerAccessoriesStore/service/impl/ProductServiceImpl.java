@@ -1,6 +1,5 @@
 package com.computerAccessoriesStore.service.impl;
 
-import com.computerAccessoriesStore.models.Act;
 import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.repository.ProductRepository;

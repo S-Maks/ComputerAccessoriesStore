@@ -13,11 +13,18 @@ import java.math.BigDecimal;
 @EnableJpaRepositories("com.computerAccessoriesStore.*")
 public class CreditCardDTO {
     private Long id;
+
     private String firsName;
+
     private String lastName;
+
     private String cvv;
+
     private String month_year;
+
     private int card_code;
+
     private BigDecimal balance;
+
     private Long idBuyer;
 }

@@ -1,10 +1,8 @@
 package com.computerAccessoriesStore.controller.act;
 
 import com.computerAccessoriesStore.models.Act;
-import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.service.ActService;
 import com.computerAccessoriesStore.transfer.ActDTO;
-import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +47,7 @@ public class ActController {
         }
         return "redirect:/act/showAct";
     }
+
     @GetMapping(value = "/editAct")
     public String editAct(@RequestParam(value = "id", required = true) Long id, Model model) {
         Optional<Act> dto = actService.getById(id);
@@ -62,6 +61,7 @@ public class ActController {
         model.addAttribute("act", actDTO);
         return "admin/act/editAct";
     }
+
     @RequestMapping(value = "/editAct", method = RequestMethod.POST)
     public String editAct(@ModelAttribute ActDTO dto, BindingResult errors, Model model) throws Exception {
         actService.edit(dto);

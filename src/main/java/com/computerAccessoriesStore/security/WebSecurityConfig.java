@@ -28,9 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/signIn", "/signUp", "/css/**", "/fonts/**", "/img/**", "/scripts/**")
                 .permitAll()
-//                    .anyRequest().not().access("hasRole('BLOCKED')")
-                //  .antMatchers().not().hasRole("BLOCKED")
-
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .antMatchers("/act/**").access("hasRole('ADMIN')")
                 .antMatchers("/product/**").access("hasRole('BUYER') or hasRole('ADMIN')")
@@ -55,5 +52,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("select username, password, true from account where username=?")
                 .authoritiesByUsernameQuery("select username, role from account where username=?");
     }
-
 }

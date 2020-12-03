@@ -2,14 +2,12 @@ package com.computerAccessoriesStore.controller.buyer;
 
 import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.models.User;
-import com.computerAccessoriesStore.repository.UserRepository;
 import com.computerAccessoriesStore.service.ActService;
 import com.computerAccessoriesStore.service.ProductService;
 import com.computerAccessoriesStore.service.UserService;
 import com.computerAccessoriesStore.transfer.ActDTO;
 import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
