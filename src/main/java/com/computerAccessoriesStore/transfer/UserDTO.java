@@ -16,14 +16,12 @@ import java.sql.Date;
 @Builder
 @EnableJpaRepositories("com.computerAccessoriesStore.*")
 public class UserDTO {
-    Long id;
-
-    String firstName;
-    String lastName;
-    String email;
-    String username;
-    String password;
-    Date created_at;
-    Role role;
-
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String username;
+    private String password;
+    private Date created_at;
+    private Role role;
 }
