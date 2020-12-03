@@ -19,27 +19,29 @@
         </ul>
     </div>
 </div>
+<div class="text-center">
 
-<div class="table-container-small">
-    <table>
-        <thead>
-        <tr>
-            <th class="a-link-no-margin">Id</th>
-            <th class="a-link-no-margin">Название</th>
-            <th class="a-link-no-margin">Цена</th>
-            <th class="a-link-no-margin">Имя пользователя продавца</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="product: ${products}">
-            <td class="a-link-no-margin" th:text="${product.id}"></td>
-            <td th:utext="${product.product_name}" class="a-link-no-margin"></td>
-            <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
-            <td th:utext="${product.user.username}" class="a-link-no-margin"></td>
-        </tr>
-        </tbody>
-    </table>
-    </form>
+    <div class="table-container-small table-container">
+        <table>
+            <thead>
+            <tr>
+                <th class="a-link-no-margin">Id</th>
+                <th class="a-link-no-margin">Название</th>
+                <th class="a-link-no-margin">Цена</th>
+                <th class="a-link-no-margin">Имя пользователя продавца</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${products}">
+                <td class="a-link-no-margin" th:text="${product.id}"></td>
+                <td th:utext="${product.product_name}" class="a-link-no-margin"></td>
+                <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
+                <td th:utext="${product.user.username}" class="a-link-no-margin"></td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
 </div>
 </body>
 </html>

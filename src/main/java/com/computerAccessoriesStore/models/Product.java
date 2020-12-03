@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,14 +20,17 @@ public class Product {
     @Id
     @Column(name = "idproduct")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
-    Float product_cost;
+    private Float product_cost;
 
-    String product_name;
+    private String product_name;
 
     @ManyToOne
     @JoinColumn(name="idseller")
     private User user;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idact")
+    private List<Act> acts = new ArrayList<>();
 }

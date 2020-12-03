@@ -44,8 +44,8 @@
                     <td th:text="${product.product_name}"class="a-link-no-margin"></td>
                     <td th:text="${product.product_cost}"class="a-link-no-margin"></td>
                     <td th:utext="${product.user.username}" class="a-link-no-margin"></td>
-                    <td class="td-x-container"><a class="a-link-no-margin red-x"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
-                    <td class="td-x-container"><a class="a-link-no-margin red-x" ><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
+                    <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/editProduct?id=' + ${product.id}"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
+                    <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/deleteProduct?id=' + ${product.id}"><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
                 </tr>
                 </tbody>
             </table>

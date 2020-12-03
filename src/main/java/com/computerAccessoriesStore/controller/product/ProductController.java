@@ -1,7 +1,6 @@
 package com.computerAccessoriesStore.controller.product;
 
 import com.computerAccessoriesStore.models.Product;
-import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +30,6 @@ public class ProductController {
         List<Product>findProduct =productService.getProductsByName(name);
         model.addAttribute("result", findProduct);
         model.addAttribute("search", name);
-        return "product/findProduct";
+        return "admin/product/findProduct";
     }
 }

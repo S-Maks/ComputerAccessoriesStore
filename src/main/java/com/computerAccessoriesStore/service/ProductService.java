@@ -5,6 +5,7 @@ import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.transfer.ProductDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
     List<Product> getProductsByName(String productName);
@@ -13,4 +14,8 @@ public interface ProductService {
     void add(ProductDTO dto);
 
     void deleteById(Long id);
+
+    Optional<Product> getById(Long id);
+
+    void edit(ProductDTO dto);
 }

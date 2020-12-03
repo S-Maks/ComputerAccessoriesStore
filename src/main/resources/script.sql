@@ -16,6 +16,19 @@ create table product(
   FOREIGN KEY (idSeller) references Account(idUser) ON DELETE CASCADE on update CASCADE
 );
 
+create table act(
+    idAct SERIAL PRIMARY KEY ,
+    count INT NOT NULL,
+    idSeller INT NOT NULL,
+    idBuyer INT NOT NULL,
+    idProduct INT NOT NULL,
+    created_at DATE NOT NULL,
+    FOREIGN KEY (idSeller) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE,
+    FOREIGN KEY (idBuyer) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE,
+    FOREIGN KEY (idProduct) REFERENCES product(idProduct)ON DELETE CASCADE on update CASCADE
+);
+
+
 insert into Account (first_name, last_name, email, username, password, created_at, role)
 VALUES ('Maks','Titok','admin@mail.ru', 'admin','admin','25-11-2020','ROLE_ADMIN') ;
 
@@ -34,4 +47,11 @@ insert into product(product_cost, product_name, idSeller)
 insert into product(product_cost, product_name, idSeller)
 VALUES (1.68,'Молоко',2);
 
-drop table account, product;
+insert into act(count,idSeller, idBuyer, idProduct, created_at)
+ VALUES (10,1,2,1,'03-12-2020');
+
+insert into act(count,idSeller, idBuyer, idProduct, created_at)
+VALUES (5,2,1,2,'03-12-2020');
+
+
+drop table account, product, act;

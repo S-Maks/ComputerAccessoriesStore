@@ -22,23 +22,27 @@ public class User {
     @Id
     @Column (name = "iduser")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column(name = "first_name")
-    String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    String lastName;
+    private String lastName;
 
-    String email;
-    String username;
-    String password;
-    Date created_at;
+    private String email;
+    private String username;
+    private String password;
+    private Date created_at;
 
     @Enumerated(EnumType.STRING)
-    Role role;
+    private Role role;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idproduct")
     private List<Product> products = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idact")
+    private List<Act> acts = new ArrayList<>();
 }

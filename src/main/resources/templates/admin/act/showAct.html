@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<div class="container">
+    <div class="navbar">
+        <a class="a-link-margin" th:href="@{/} ">На главную</a>
+        <ul class="p-l-500">
+            <li><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="text-center">
+        <input class="search" type="text" name="search" th:value="${search}"
+               placeholder="Поиск по имени пользователя">
+
+        <div th:if="${not #lists.isEmpty(result)}">
+            <h1 class="c-text-h1">Найденные Чеки</h1>
+            <div class="table-container-act">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="a-link-no-margin">Id</th>
+                        <th class="a-link-no-margin">Id товара</th>
+                        <th class="a-link-no-margin">Имя товара</th>
+                        <th class="a-link-no-margin">Количество</th>
+                        <th class="a-link-no-margin">Id продавца</th>
+                        <th class="a-link-no-margin">Имя пользователя продавца</th>
+                        <th class="a-link-no-margin">Id покупателя</th>
+                        <th class="a-link-no-margin">Имя пользователя покупателя</th>
+                        <th class="a-link-no-margin">Дата</th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="acts: ${result}">
+                        <td th:text="${acts.id}"></td>
+                        <td th:utext="${acts.product.id}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.product.product_name}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.count}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.seller.id}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.seller.username}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.buyer.id}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.buyer.username}" class="a-link-no-margin"></td>
+                        <td th:utext="${acts.created_at}" class="a-link-no-margin"></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/act/editAct?id=' + ${acts.id}"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/act/deleteAct?id=' + ${acts.id}"><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+
+
+</body>
+</html>
