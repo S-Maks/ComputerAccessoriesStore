@@ -46,6 +46,10 @@ public class User {
     @JoinColumn(name = "idact")
     private List<Act> acts = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idcomment")
+    private List<Comment> comments = new ArrayList<>();
+
     @Override
     public String toString() {
         return "User{" +

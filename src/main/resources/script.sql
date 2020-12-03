@@ -28,6 +28,17 @@ create table act(
     FOREIGN KEY (idProduct) REFERENCES product(idProduct)ON DELETE CASCADE on update CASCADE
 );
 
+create table comment(
+    idComment SERIAL PRIMARY KEY ,
+    message VARCHAR NOT NULL,
+    rating INT NOT NULL ,
+    created_at timestamp NOT NULL,
+    idSeller INT NOT NULL,
+    idBuyer INT NOT NULL,
+    FOREIGN KEY (idSeller) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE,
+    FOREIGN KEY (idBuyer) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE
+);
+
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
 VALUES ('Maks','Titok','admin@mail.ru', 'admin','admin','25-11-2020','ROLE_ADMIN') ;
@@ -39,13 +50,22 @@ insert into Account (first_name, last_name, email, username, password, created_a
 VALUES ('Miha','Pashkevich','miha@mail.ru', 'miha','miha','25-11-2020','ROLE_SELLER') ;
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Vlad','Praskov','Praskov@mail.ru', 'qwerty','qwerty','25-11-2020','ROLE_BLOCKED') ;
+VALUES ('Vlad','Praskov','Praskov@mail.ru', 'qwerty','qwerty','25-11-2020','ROLE_BLOCKED');
+
+insert into Account (first_name, last_name, email, username, password, created_at, role)
+VALUES ('Inessa','Khlud','Inkhl369@mail.ru', 'inessa','inessa','04-15-2020','ROLE_BUYER');
 
 insert into product(product_cost, product_name, idSeller)
- VALUES (255.0,'Стол',1);
+ VALUES (21.56,'Мышь logitech',3);
 
 insert into product(product_cost, product_name, idSeller)
-VALUES (1.68,'Молоко',2);
+VALUES (115.63,'Монитор Acer',3);
+
+insert into product(product_cost, product_name, idSeller)
+VALUES (75.90,'Механическая клавиатура HP',3);
+
+insert into product(product_cost, product_name, idSeller)
+VALUES (259.99,'SSD 256ГБ Samsung',3);
 
 insert into act(count,idSeller, idBuyer, idProduct, created_at)
  VALUES (10,1,2,1,'03-12-2020');
@@ -53,5 +73,11 @@ insert into act(count,idSeller, idBuyer, idProduct, created_at)
 insert into act(count,idSeller, idBuyer, idProduct, created_at)
 VALUES (5,2,1,2,'03-12-2020');
 
+insert into comment(message, rating, idSeller, idBuyer, created_at)
+VALUES ('Балдежный продавец',5,3,2, '09-01-2020 04:05:06');
 
-drop table account, product, act;
+insert into comment(message, rating, idSeller, idBuyer, created_at)
+VALUES ('Брала мышь для себя, настолько хорошая, что взяла и маме!',5,3,2,'09-01-2020 04:05:06');
+
+
+drop table account, product, act, comment;
