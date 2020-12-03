@@ -50,6 +50,10 @@ public class User {
     @JoinColumn(name = "idcomment")
     private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idcard")
+    private List<CreditCard> creditCards = new ArrayList<>();
+
     @Override
     public String toString() {
         return "User{" +

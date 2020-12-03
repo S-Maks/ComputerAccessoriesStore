@@ -39,21 +39,33 @@ create table comment(
     FOREIGN KEY (idBuyer) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE
 );
 
+create table credit_card(
+  idCard SERIAL NOT NULL ,
+  first_name VARCHAR(50) NOT NULL ,
+  last_name VARCHAR(50) NOT NULL,
+  cvv VARCHAR(5) NOT NULL ,
+  month_year VARCHAR(10) NOT NULL ,
+  card_code VARCHAR(20) NOT NULL ,
+  balance money NOT NULL DEFAULT (0),
+  idBuyer INT NOT NULL,
+  FOREIGN KEY (idBuyer) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE
+);
+
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Maks','Titok','admin@mail.ru', 'admin','admin','25-11-2020','ROLE_ADMIN') ;
+VALUES ('Maks','Titok','admin@mail.ru', 'admin','admin','2020-12-02','ROLE_ADMIN') ;
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Rita','Titok','rita@mail.ru', 'rita','rita','25-11-2020','ROLE_BUYER') ;
+VALUES ('Rita','Titok','rita@mail.ru', 'rita','rita','2020-12-02','ROLE_BUYER') ;
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Miha','Pashkevich','miha@mail.ru', 'miha','miha','25-11-2020','ROLE_SELLER') ;
+VALUES ('Miha','Pashkevich','miha@mail.ru', 'miha','miha','2020-12-02','ROLE_SELLER') ;
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Vlad','Praskov','Praskov@mail.ru', 'qwerty','qwerty','25-11-2020','ROLE_BLOCKED');
+VALUES ('Vlad','Praskov','Praskov@mail.ru', 'qwerty','qwerty','2020-12-02','ROLE_BLOCKED');
 
 insert into Account (first_name, last_name, email, username, password, created_at, role)
-VALUES ('Inessa','Khlud','Inkhl369@mail.ru', 'inessa','inessa','04-15-2020','ROLE_BUYER');
+VALUES ('Inessa','Khlud','Inkhl369@mail.ru', 'inessa','inessa','2020-04-15','ROLE_BUYER');
 
 insert into product(product_cost, product_name, idSeller)
  VALUES (21.56,'Мышь logitech',3);
@@ -79,5 +91,7 @@ VALUES ('Балдежный продавец',5,3,2, '09-01-2020 04:05:06');
 insert into comment(message, rating, idSeller, idBuyer, created_at)
 VALUES ('Брала мышь для себя, настолько хорошая, что взяла и маме!',5,3,2,'09-01-2020 04:05:06');
 
+insert into credit_card(FIRST_NAME, LAST_NAME, CVV, MONTH_YEAR, CARD_CODE, IDBUYER)
+VALUES ('RITA','PROKHOZHAYA','123','12/23','1234567890123456',2);
 
-drop table account, product, act, comment;
+drop table account, product, act, comment, credit_card;
