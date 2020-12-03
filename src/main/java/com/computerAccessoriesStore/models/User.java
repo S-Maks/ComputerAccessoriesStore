@@ -45,4 +45,20 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idact")
     private List<Act> acts = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", created_at=" + created_at +
+                ", role=" + role +
+                ", products=" + products +
+                ", acts=" + acts +
+                '}';
+    }
 }

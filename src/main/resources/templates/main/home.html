@@ -21,8 +21,27 @@
         </div>
     </div>
 </header>
-<div th:if="${#request.isUserInRole('ADMIN')}">
 
+<div th:if="${#request.isUserInRole('BUYER')}">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-60 p-b-30">
+            <ul>
+                <li>
+                    <a th:href="@{/product/showProduct}">
+                        <div class="centerHorizon centerVertical buttonMenu">Просмотр Товаров</div>
+                    </a>
+                </li>
+                <li style="margin-left: 20px">
+                    <a th:href="@{/product/findProduct}">
+                        <div class="centerVertical centerHorizon buttonMenu">Найти <br>Товар</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div th:if="${#request.isUserInRole('ADMIN')}">
     <div class="container-login100">
         <div class="wrap-login100 p-t-60 p-b-30">
             <ul>

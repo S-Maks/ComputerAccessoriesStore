@@ -2,6 +2,8 @@ package com.computerAccessoriesStore.service;
 
 import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.transfer.UserDTO;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,5 +19,7 @@ public interface UserService {
     void edit(UserDTO dto);
 
     Optional<User> getById(Long id);
+
+    User getUsername(String username);
 
 }

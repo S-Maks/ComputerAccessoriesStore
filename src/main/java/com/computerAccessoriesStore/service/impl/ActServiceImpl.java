@@ -9,6 +9,7 @@ import com.computerAccessoriesStore.transfer.ActDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,7 @@ public class ActServiceImpl implements ActService {
     public void add(ActDTO dto) {
         Act act = Act.builder()
                 .count(dto.getCount())
-                .created_at(dto.getCreated_at())
+                .created_at(new java.sql.Date(Calendar.getInstance().getTime().getTime()))
                 .buyer(User.builder().id((dto.getIdBuyer())).build())
                 .product(Product.builder().id(dto.getIdProduct()).build())
                 .seller(User.builder().id(dto.getIdSeller()).build())
