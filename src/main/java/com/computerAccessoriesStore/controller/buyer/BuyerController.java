@@ -31,7 +31,7 @@ public class BuyerController {
     private UserService userService;
 
     @GetMapping("/buyProduct")
-    public String buyProduct(@RequestParam(value = "id", required = true) Long id, Model model){
+    public String buyProduct(@RequestParam(value = "id", required = true) Long id, Model model) {
         Optional<Product> product = productService.getById(id);
         ProductDTO productDTO = ProductDTO.builder()
                 .id(product.get().getId())
@@ -41,37 +41,41 @@ public class BuyerController {
                 .build();
         model.addAttribute("product", productDTO);
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("buyer",buyer);
-        model.addAttribute("seller",product.get().getSeller());
+        model.addAttribute("buyer", buyer);
+        model.addAttribute("seller", product.get().getSeller());
         return "buyer/buyProduct";
     }
 
     @PostMapping(value = "/buyProduct")
-    public String buyProduct(@ModelAttribute ActDTO dto, Model model){
+    public String buyProduct(@ModelAttribute ActDTO dto, Model model) {
         actService.add(dto);
         return "redirect:/product/showProduct";
     }
 
     @GetMapping(value = "/personalAccount")
-    public String personalAccount(Model model){
+    public String personalAccount(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("buyer",buyer);
+        model.addAttribute("buyer", buyer);
         return "buyer/personalAccount";
     }
 
     @GetMapping(value = "/shopList")
-    public String shopList(Model model){
+    public String shopList(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Act> actList = actService.findAllByBuyer(buyer.getId());
-        model.addAttribute("acts",actList);
+        model.addAttribute("acts", actList);
         return "buyer/shopList";
     }
 
     @GetMapping(value = "/listSellers")
-    public String listSellers(Model model){
-        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        List<Act> actList = actService.findAllByBuyer(buyer.getId());
-        model.addAttribute("acts",actList);
-        return "buyer/shopList";
+    public String listSellers(@RequestParam(value = "search", required = false, defaultValue = "") String name, Model model) {
+        List<User> sellers = userService.findAllBySellerInfoByParam(name);
+        model.addAttribute("sellers", sellers);
+        return "buyer/listSellers";
+    }
+
+    @GetMapping(value = "/leaveComment")
+    public String leaveComment(Model model) {
+        return "buyer/listSellers";
     }
 }

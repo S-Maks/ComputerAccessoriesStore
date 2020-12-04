@@ -21,4 +21,7 @@ public interface UserService {
 
     User getUsername(String username);
 
+    List<User> findAllBySeller();
+
+    List<User> findAllBySellerInfoByParam(String param);
 }

@@ -69,12 +69,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getById(Long id) {
-        Optional<User> user = userRepository.findById(id) ;
         return userRepository.findById(id);
     }
 
     @Override
     public User getUsername(String username) {
         return userRepository.getByUsername(username);
+    }
+
+    @Override
+    public List<User> findAllBySeller() {
+        return userRepository.findAllBySeller();
+    }
+
+    @Override
+    public List<User> findAllBySellerInfoByParam(String param) {
+        return StreamSupport.stream(userRepository
+                .findAllBySeller().spliterator(), false)
+                .filter(user -> user.getFirstName().contains(param)
+                        || user.getLastName().contains(param)
+                        || user.getUsername().contains(param))
+                .collect(Collectors.toList());
     }
 }
