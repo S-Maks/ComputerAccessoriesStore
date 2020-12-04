@@ -18,4 +18,6 @@ public interface ProductService {
     Optional<Product> getById(Long id);
 
     void edit(ProductDTO dto);
+
+    List<Product> findAllBySellerId(Long id);
 }

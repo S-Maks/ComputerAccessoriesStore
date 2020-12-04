@@ -115,7 +115,7 @@ public class UserController {
                 .id(dto.get().getId())
                 .product_cost(dto.get().getProduct_cost())
                 .product_name(dto.get().getProduct_name())
-                .idSeller(dto.get().getUser().getId())
+                .idSeller(dto.get().getSeller().getId())
                 .build();
         model.addAttribute("product", productDTO);
         return "admin/product/editProduct";

@@ -57,4 +57,14 @@ public class ActServiceImpl implements ActService {
                 .product(Product.builder().id(dto.getIdProduct()).build()).build();
         actRepository.save(act);
     }
+
+    @Override
+    public List<Act> findAllByBuyer(Long id) {
+        return actRepository.findAllByBuyer(id);
+    }
+
+    @Override
+    public List<Act> findAllBySellerId(Long id) {
+        return actRepository.findAllBySellerId(id);
+    }
 }

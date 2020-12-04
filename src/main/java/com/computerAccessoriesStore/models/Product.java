@@ -27,7 +27,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="idseller")
-    private User user;
+    private User seller;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idact")

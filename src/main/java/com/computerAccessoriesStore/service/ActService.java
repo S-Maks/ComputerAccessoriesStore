@@ -16,4 +16,8 @@ public interface ActService {
     Optional<Act> getById(Long id);
 
     void edit(ActDTO dto);
+
+    List<Act> findAllByBuyer(Long Id);
+
+    List<Act> findAllBySellerId(Long id);
 }

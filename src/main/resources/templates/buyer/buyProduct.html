@@ -20,45 +20,45 @@
     </div>
 </div>
 
-<form class="login100-form validate-form" th:action="@{/buyer/buyProduct}" method="post">
-
-    <div>
-        Информация о покупке<br>
-        <div class="table-container-small table-container">
-            <table>
-                <thead>
-                <tr>
-                    <th class="a-link-no-margin">Название</th>
-                    <th class="a-link-no-margin">Стоимость за 1 шт</th>
-                    <th class="a-link-no-margin">Продавец</th>
-                    <th class="a-link-no-margin">Имя пользователя продавца</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <td class="a-link-no-margin" th:text="${product.product_name}"></td>
-                    <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
-                    <td th:utext="${seller.firstName}" class="a-link-no-margin"></td>
-                    <td th:utext="${seller.username}" class="a-link-no-margin"></td>
-                </tbody>
-            </table>
-</form>
-</div>
+<div>
+    Информация о покупке<br>
+    <div class="table-container-small table-container">
+        <table>
+            <thead>
+            <tr>
+                <th class="a-link-no-margin">Название</th>
+                <th class="a-link-no-margin">Стоимость за 1 шт</th>
+                <th class="a-link-no-margin">Продавец</th>
+                <th class="a-link-no-margin">Имя пользователя продавца</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td class="a-link-no-margin" th:text="${product.product_name}"></td>
+            <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.firstName}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.username}" class="a-link-no-margin"></td>
+            </tbody>
+        </table>
     </div>
+</div>
+<form class="login100-form validate-form" th:action="@{/buyer/buyProduct}" method="post">
 
     <div class="wrap-input100 validate-input m-b-10">
         <input class="input100" type="text" placeholder="Количество товара" id="count" name="count">
     </div>
 
     <div class="wrap-input100 validate-input m-b-10">
-        <input class="input100" th:value = "${product.id}" type="hidden" placeholder="Id товара" id="idProduct" name="idProduct">
+        <input class="input100" th:value="${product.id}" type="hidden" placeholder="Id товара" id="idProduct"
+               name="idProduct">
     </div>
 
     <div class="wrap-input100 validate-input m-b-10">
-        <input class="input100" th:value = "${product.idSeller}" type="hidden" placeholder="Id продавца" id="idSeller" name="idSeller">
+        <input class="input100" th:value="${product.idSeller}" type="hidden" placeholder="Id продавца" id="idSeller"
+               name="idSeller">
     </div>
 
     <div class="wrap-input100 validate-input m-b-10">
-        <input class="input100" type="hidden" th:value = "${buyer.id}" id="idBuyer" name="idBuyer">
+        <input class="input100" type="hidden" th:value="${buyer.id}" id="idBuyer" name="idBuyer">
     </div>
     <div class="container-login100-form-btn p-t-10">
         <button class="login100-form-btn">
@@ -66,8 +66,6 @@
         </button>
     </div>
 </form>
-
-
 
 </body>
 </html>

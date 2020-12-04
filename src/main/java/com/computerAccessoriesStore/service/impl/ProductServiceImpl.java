@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = Product.builder()
                 .product_name(dto.getProduct_name())
                 .product_cost(dto.getProduct_cost())
-                .user(User.builder().id(dto.getIdSeller()).build())
+                .seller(User.builder().id(dto.getIdSeller()).build())
                 .build();
         productRepository.save(product);
     }
@@ -58,8 +58,13 @@ public class ProductServiceImpl implements ProductService {
                 .id(dto.getId())
                 .product_name(dto.getProduct_name())
                 .product_cost(dto.getProduct_cost())
-                .user(User.builder().id(dto.getIdSeller()).build())
+                .seller(User.builder().id(dto.getIdSeller()).build())
                 .build();
         productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> findAllBySellerId(Long id) {
+        return productRepository.findAllBySellerId(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.computerAccessoriesStore.controller.buyer;
 
+import com.computerAccessoriesStore.models.Act;
 import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.service.ActService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -35,18 +37,41 @@ public class BuyerController {
                 .id(product.get().getId())
                 .product_cost(product.get().getProduct_cost())
                 .product_name(product.get().getProduct_name())
-                .idSeller(product.get().getUser().getId())
+                .idSeller(product.get().getSeller().getId())
                 .build();
         model.addAttribute("product", productDTO);
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("buyer",buyer);
-        model.addAttribute("seller",product.get().getUser());
+        model.addAttribute("seller",product.get().getSeller());
         return "buyer/buyProduct";
     }
 
-    @RequestMapping(value = "/buyProduct", method = RequestMethod.POST)
+    @PostMapping(value = "/buyProduct")
     public String buyProduct(@ModelAttribute ActDTO dto, Model model){
         actService.add(dto);
         return "redirect:/product/showProduct";
+    }
+
+    @GetMapping(value = "/personalAccount")
+    public String personalAccount(Model model){
+        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("buyer",buyer);
+        return "buyer/personalAccount";
+    }
+
+    @GetMapping(value = "/shopList")
+    public String shopList(Model model){
+        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Act> actList = actService.findAllByBuyer(buyer.getId());
+        model.addAttribute("acts",actList);
+        return "buyer/shopList";
+    }
+
+    @GetMapping(value = "/listSellers")
+    public String listSellers(Model model){
+        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Act> actList = actService.findAllByBuyer(buyer.getId());
+        model.addAttribute("acts",actList);
+        return "buyer/shopList";
     }
 }
