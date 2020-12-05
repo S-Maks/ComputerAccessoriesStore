@@ -166,10 +166,6 @@ a {
 .logo:hover{
     transition: 2s;
 }
-
-img {
-    margin-top: 3.5%;
-}
 th{
     background-color: #1c9f8a;
     color: white;

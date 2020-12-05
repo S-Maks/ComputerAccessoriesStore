@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/buyer")
@@ -69,6 +71,7 @@ public class BuyerController {
     public String shopList(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Act> actList = actService.findAllByBuyer(buyer.getId());
+
         model.addAttribute("acts", actList);
         return "buyer/shopList";
     }
@@ -97,8 +100,12 @@ public class BuyerController {
 
     @GetMapping(value = "/showRating")
     public String showRating(@RequestParam(value = "id", required = true) Long id, Model model) {
-        List<Comment> comments = commentService.findAllBySellerId(id);
+        List<Comment> comments = commentService.getCommentSellerBySortDate(id);
+        OptionalDouble rating = comments.stream().mapToDouble(e->e.getRating()).average();
+        Optional<User> user = userService.getById(id);
+        model.addAttribute("user",user.get());
         model.addAttribute("comments", comments);
+        model.addAttribute("average",new java.text.DecimalFormat("0.00").format( rating.getAsDouble() ));
         return "buyer/showRating";
     }
 }

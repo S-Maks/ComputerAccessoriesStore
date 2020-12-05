@@ -18,4 +18,6 @@ public interface CommentService {
     void edit(CommentDTO dto);
 
     List<Comment> findAllBySellerId(Long id);
+
+    List<Comment> getCommentSellerBySortDate(Long id);
 }

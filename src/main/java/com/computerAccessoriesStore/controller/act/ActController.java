@@ -29,15 +29,6 @@ public class ActController {
         return "admin/act/showAct";
     }
 
-    @RequestMapping(value = "/saveFile", method = RequestMethod.GET)
-    public String saveFile(@RequestParam (value = "id", required = true) Long id, Model model){
-        if(id != null){
-            //ActDTO dto = actService.getById(id);
-
-        }
-        return "fdsfd";
-    }
-
     @GetMapping("/addAct")
     public String addAct() {
         return "admin/act/addAct";

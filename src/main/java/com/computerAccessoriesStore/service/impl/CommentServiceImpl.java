@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -59,5 +62,13 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> findAllBySellerId(Long id) {
         return commentRepository.findAllBySellerId(id);
+    }
+
+    @Override
+    public List<Comment> getCommentSellerBySortDate(Long id){
+        return StreamSupport.stream(commentRepository
+                .findAllBySellerId(id).spliterator(), false)
+                .sorted(Comparator.comparing(Comment::getCreated_at).reversed())
+                .collect(Collectors.toList());
     }
 }
