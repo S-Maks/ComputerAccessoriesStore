@@ -29,8 +29,8 @@ public class CommentServiceImpl implements CommentService {
                 .message(dto.getMessage())
                 .rating(dto.getRating())
                 .created_at(new Timestamp(System.currentTimeMillis()))
-                .buyer(User.builder().id(dto.getId()).build())
-                .seller(User.builder().id(dto.getId()).build()).build();
+                .buyer(User.builder().id(dto.getIdBuyer()).build())
+                .seller(User.builder().id(dto.getIdSeller()).build()).build();
         commentRepository.save(comment);
     }
 
@@ -54,5 +54,10 @@ public class CommentServiceImpl implements CommentService {
                 .buyer(User.builder().id(dto.getId()).build())
                 .seller(User.builder().id(dto.getId()).build()).build();
         commentRepository.save(comment);
+    }
+
+    @Override
+    public List<Comment> findAllBySellerId(Long id) {
+        return commentRepository.findAllBySellerId(id);
     }
 }

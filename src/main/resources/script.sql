@@ -40,7 +40,7 @@ create table comment(
 );
 
 create table credit_card(
-  idCard SERIAL NOT NULL ,
+  idCard SERIAL PRIMARY KEY ,
   first_name VARCHAR(50) NOT NULL ,
   last_name VARCHAR(50) NOT NULL,
   cvv VARCHAR(5) NOT NULL ,

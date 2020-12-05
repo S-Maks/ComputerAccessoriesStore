@@ -16,4 +16,6 @@ public interface CommentService {
     Optional<Comment> getById(Long id);
 
     void edit(CommentDTO dto);
+
+    List<Comment> findAllBySellerId(Long id);
 }

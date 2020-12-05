@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<div class="container">
+    <div class="navbar">
+        <a class="a-link-margin" th:href="@{/} ">На главную</a>
+        <ul class="p-l-500">
+            <li><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr >
+            <th class="a-link-no-margin">От</th>
+            <th class="a-link-no-margin">Сообщение</th>
+            <th class="a-link-no-margin">Отметка</th>
+            <th class="a-link-no-margin">Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comment: ${comments}">
+            <td th:utext="${comment.buyer.username}" class="a-link-no-margin"></td>
+            <td th:utext="${comment.message}" class="a-link-no-margin"></td>
+            <td th:utext="${comment.rating}" class="a-link-no-margin"></td>
+            <td th:utext="${comment.rating}" class="a-link-no-margin"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

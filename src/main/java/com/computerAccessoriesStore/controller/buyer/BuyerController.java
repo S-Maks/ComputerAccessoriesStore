@@ -1,12 +1,15 @@
 package com.computerAccessoriesStore.controller.buyer;
 
 import com.computerAccessoriesStore.models.Act;
+import com.computerAccessoriesStore.models.Comment;
 import com.computerAccessoriesStore.models.Product;
 import com.computerAccessoriesStore.models.User;
 import com.computerAccessoriesStore.service.ActService;
+import com.computerAccessoriesStore.service.CommentService;
 import com.computerAccessoriesStore.service.ProductService;
 import com.computerAccessoriesStore.service.UserService;
 import com.computerAccessoriesStore.transfer.ActDTO;
+import com.computerAccessoriesStore.transfer.CommentDTO;
 import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,6 +32,9 @@ public class BuyerController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/buyProduct")
     public String buyProduct(@RequestParam(value = "id", required = true) Long id, Model model) {
@@ -75,7 +81,24 @@ public class BuyerController {
     }
 
     @GetMapping(value = "/leaveComment")
-    public String leaveComment(Model model) {
-        return "buyer/listSellers";
+    public String leaveComment(@RequestParam(value = "id", required = true) Long id, Model model) {
+        Optional<User> seller = userService.getById(id);
+        model.addAttribute("idSeller", seller.get().getId());
+        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("idBuyer", buyer.getId());
+        return "buyer/leaveComment";
+    }
+
+    @PostMapping(value = "/leaveComment")
+    public String leaveComment(@ModelAttribute CommentDTO dto, Model model) {
+        commentService.add(dto);
+        return "redirect:/buyer/listSellers";
+    }
+
+    @GetMapping(value = "/showRating")
+    public String showRating(@RequestParam(value = "id", required = true) Long id, Model model) {
+        List<Comment> comments = commentService.findAllBySellerId(id);
+        model.addAttribute("comments", comments);
+        return "buyer/showRating";
     }
 }

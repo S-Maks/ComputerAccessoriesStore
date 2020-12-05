@@ -32,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/act/**").access("hasRole('ADMIN')")
                 .antMatchers("/product/**").access("hasRole('BUYER') or hasRole('ADMIN')")
                 .antMatchers("/home").access( "hasRole('SELLER') or hasRole('ADMIN') or hasRole('BUYER')")
-                .antMatchers("/all/home").access("hasRole('BLOCKED')")
                 .anyRequest()
                 .authenticated()
                 .and()

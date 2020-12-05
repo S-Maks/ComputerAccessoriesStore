@@ -21,7 +21,13 @@ button {
     font-size: 2.25rem;
     font-weight: 800;
 }
+.choice{
+    padding:2% 15%;
 
+}
+.homeUl{
+padding-top: 20px;
+}
 .margin-five {
     margin-top: 5%;
 }
@@ -136,11 +142,22 @@ a {
     padding: 2% 20%;
     font-size: 18px;
 }
+.table-container-user{
+    padding-left: 4%;
+    font-size: 18px;
+}
 .table-container-act{
     padding: 2% 2%;
     font-size: 18px;
 }
-
+.table-container-product{
+    padding-left: 15%;
+    font-size: 18px;
+}
+.addProduct{
+    padding-left: 44%;
+    padding-block-end: 8px;
+}
 .logo {
     margin-left: 20px;
     height: 35px;

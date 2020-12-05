@@ -19,7 +19,7 @@
                         Аккаунт
                     </a></li>
                 </div>
-                <div>
+                <div th:if="${#request.isUserInRole('SELLER')}">
                     <li><a class="a-link-margin" th:href="@{/seller/personalAccount}">
                         Аккаунт
                     </a></li>
@@ -66,66 +66,25 @@
 </div>
 
 <div th:if="${#request.isUserInRole('ADMIN')}">
-    <div class="container-login100">
-        <div class="wrap-login100 p-t-60 p-b-30">
-            <ul>
+        <div class = "choice">
+            <ul class="homeUl">
                 <li>
-                    <a th:href="@{/admin/showUser}">
-                        <div class="centerHorizon centerVertical buttonMenu">
-                            Просмотр Пользователей
-                        </div>
-                    </a>
-                </li>
-                <li style="margin-left: 20px">
                     <a th:href="@{/admin/findUser}">
-                        <div class="centerVertical centerHorizon buttonMenu">Найти Пользователя</div>
+                        <div class="centerVertical centerHorizon buttonMenu">Пользователи</div>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/blockUser}">
-                        <div class="centerHorizon centerVertical buttonMenu">
-                            Блокировка Пользователя
-                        </div>
-                    </a>
-                </li>
-                <li style="margin-left: 20px">
-                    <a th:href="@{/admin/deleteUser}">
-                        <div class="centerVertical centerHorizon buttonMenu">Удаление Пользователя</div>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a th:href="@{/product/showProduct}">
-                        <div class="centerHorizon centerVertical buttonMenu">Просмотр Товаров</div>
-                    </a>
-                </li>
-                <li style="margin-left: 20px">
                     <a th:href="@{/product/findProduct}">
-                        <div class="centerVertical centerHorizon buttonMenu">Найти <br>Товар</div>
+                        <div class="centerVertical centerHorizon buttonMenu">Товары</div>
                     </a>
                 </li>
-                </li>
-                <li style="margin-left: 20px">
-                    <a th:href="@{/admin/addProduct}">
-                        <div class="centerVertical centerHorizon buttonMenu">Добавление <br>Товара</div>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li style="margin-left: 20px">
+                <li>
                     <a th:href="@{/act/showAct}">
-                        <div class="centerVertical centerHorizon buttonMenu">Просмотр <br>Чеков</div>
-                    </a>
-                </li>
-                <li style="margin-left: 20px">
-                    <a th:href="@{/act/addAct}">
-                        <div class="centerVertical centerHorizon buttonMenu">Добавление <br>Чека</div>
+                        <div class="centerVertical centerHorizon buttonMenu">Чеки</div>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-</div>
 </body>
 </html>

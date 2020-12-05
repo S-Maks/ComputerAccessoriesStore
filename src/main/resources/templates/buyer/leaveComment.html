@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<div class="container">
+    <div class="navbar">
+        <a class="a-link-margin" th:href="@{/} ">На главную</a>
+        <ul class="p-l-500">
+            <li><a class="a-link-margin" th:href="@{/logout}">
+                Выход
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<form class="login100-form validate-form" th:action="@{/buyer/leaveComment}" method="post">
+
+    <input class="input100" type="hidden" id="idBuyer" name="idBuyer" th:value="${idBuyer}">
+    <input class="input100" type="hidden" id="idSeller" name="idSeller" th:value="${idSeller}">
+
+    <div class="wrap-input100 validate-input m-b-10">
+        <select name="rating" id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+
+    <textarea placeholder="Введите ваш отзыв" name="message" id="message"></textarea>
+
+    <div class="container-login100-form-btn p-t-10">
+        <button class="login100-form-btn">
+            Отправить
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

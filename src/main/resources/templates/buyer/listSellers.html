@@ -42,6 +42,7 @@
                         <th class="a-link-no-margin">Email</th>
                         <th class="a-link-no-margin">Зарегистрирован</th>
                         <th class="a-link-no-margin">Оставить отзыв</th>
+                        <th class="a-link-no-margin">Просмотреть отзывы</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,8 +52,8 @@
                         <td th:utext="${seller.username}" class="a-link-no-margin"></td>
                         <td th:utext="${seller.email}" class="a-link-no-margin"></td>
                         <td th:utext="${seller.created_at}" class="a-link-no-margin"></td>
-                        <td class="a-link-no-margin"><a th:href="@{/buyer/leaveComment}"><img th:src="@{/img/message.png}" class="crash-bin"></a></td>
-
+                        <td class="a-link-no-margin"><a th:href="'/buyer/leaveComment?id=' + ${seller.id}"><img th:src="@{/img/message.png}" class="crash-bin"></a></td>
+                        <td class="a-link-no-margin"><a th:href="'/buyer/showRating?id=' + ${seller.id}"><img th:src="@{/img/rating.png}" class="crash-bin"></a></td>
                     </tr>
                     </tbody>
                 </table>

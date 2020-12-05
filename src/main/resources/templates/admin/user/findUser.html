@@ -32,7 +32,7 @@
 
         <div th:if="${not #lists.isEmpty(result)}">
             <h1 class="c-text-h1">Найденные пользователи</h1>
-            <div class="table-container">
+            <div class="table-container-user">
                 <table>
                     <thead>
                     <tr>
@@ -44,6 +44,9 @@
                         <th class="a-link-no-margin">Email</th>
                         <th class="a-link-no-margin">Создан</th>
                         <th class="a-link-no-margin">Роль</th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +59,9 @@
                         <td th:utext="${findUser.email}" class="a-link-no-margin"></td>
                         <td th:utext="${findUser.created_at}" class="a-link-no-margin"></td>
                         <td th:utext="${findUser.role}" class="a-link-no-margin"></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/deleteUser?id=' + ${findUser.id}"><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/editUser?id=' + ${findUser.id}"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/blockUser?id=' + ${findUser.id}"><img th:src="@{/img/lock.png}" class = "lock"></a></td>
                     </tr>
                     </tbody>
                 </table>

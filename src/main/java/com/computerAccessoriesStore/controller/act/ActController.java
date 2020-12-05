@@ -24,8 +24,18 @@ public class ActController {
     public String findAct(@RequestParam(value = "search", required = false, defaultValue = "") Long id, Model model) {
         List<Act> acts = actService.findAll();
         model.addAttribute("result", acts);
+        System.out.println(acts.get(0).getId().toString());
         //model.addAttribute("search", name);
         return "admin/act/showAct";
+    }
+
+    @RequestMapping(value = "/saveFile", method = RequestMethod.GET)
+    public String saveFile(@RequestParam (value = "id", required = true) Long id, Model model){
+        if(id != null){
+            //ActDTO dto = actService.getById(id);
+
+        }
+        return "fdsfd";
     }
 
     @GetMapping("/addAct")
