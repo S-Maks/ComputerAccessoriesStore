@@ -1,13 +1,7 @@
 package com.computerAccessoriesStore.controller.buyer;
 
-import com.computerAccessoriesStore.models.Act;
-import com.computerAccessoriesStore.models.Comment;
-import com.computerAccessoriesStore.models.Product;
-import com.computerAccessoriesStore.models.User;
-import com.computerAccessoriesStore.service.ActService;
-import com.computerAccessoriesStore.service.CommentService;
-import com.computerAccessoriesStore.service.ProductService;
-import com.computerAccessoriesStore.service.UserService;
+import com.computerAccessoriesStore.models.*;
+import com.computerAccessoriesStore.service.*;
 import com.computerAccessoriesStore.transfer.ActDTO;
 import com.computerAccessoriesStore.transfer.CommentDTO;
 import com.computerAccessoriesStore.transfer.ProductDTO;
@@ -38,6 +32,9 @@ public class BuyerController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private CreditCardService creditCardService;
+
     @GetMapping("/buyProduct")
     public String buyProduct(@RequestParam(value = "id", required = true) Long id, Model model) {
         Optional<Product> product = productService.getById(id);
@@ -63,6 +60,10 @@ public class BuyerController {
     @GetMapping(value = "/personalAccount")
     public String personalAccount(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<CreditCard> creditCard = creditCardService.findAllByBuyerId(buyer.getId());
+        System.out.println(creditCard.get(0).getBalance());
+
+        model.addAttribute("card",creditCard.get(0).getBalance());
         model.addAttribute("buyer", buyer);
         return "buyer/personalAccount";
     }

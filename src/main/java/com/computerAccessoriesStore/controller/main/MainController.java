@@ -18,4 +18,9 @@ public class MainController {
     public String homePage() {
         return "main/home";
     }
+
+    @GetMapping("/map")
+    public String ourAccommodation() {
+        return "main/ourAccommodation";
+    }
 }

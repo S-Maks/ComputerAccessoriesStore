@@ -8,13 +8,13 @@ import com.computerAccessoriesStore.service.ActService;
 import com.computerAccessoriesStore.service.CommentService;
 import com.computerAccessoriesStore.service.ProductService;
 import com.computerAccessoriesStore.service.UserService;
+import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -83,5 +83,17 @@ public class SellerController {
         }
         model.addAttribute("stonks", stonks);
         return "seller/histogramSales";
+    }
+
+    @GetMapping("/addProduct")
+    public String addProduct() {
+        return "seller/addProduct";
+    }
+
+    @PostMapping("/addProduct")
+    public String addProduct(@ModelAttribute ProductDTO dto, BindingResult errors, Model model) {
+        dto.setIdSeller(userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId());
+        productService.add(dto);
+        return "redirect:/seller/listProduct";
     }
 }
