@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="text-center ratingTitle">
-    <h1 th:utext="${user.firstName} + ' ' + ${user.lastName}"></h1>
+    <h1 th:utext="${seller.firstName} + ' ' + ${seller.lastName}"></h1>
     <img th:utext="${average}" th:src="@{/img/one-star.png}" class="star-bin">
 </div>
 <div th:each="comment: ${comments}">
@@ -36,7 +36,6 @@
             <img th:case="4" th:src="@{/img/four-star.png}" class="star-bin">
             <img th:case="5" th:src="@{/img/fife-star.png}" class="star-bin">
         </div>
-
     </div>
 </div>
 

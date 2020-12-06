@@ -45,7 +45,7 @@
             <td th:utext="${act.created_at}" class="a-link-no-margin"></td>
             <td th:utext="${act.count}" class="a-link-no-margin"></td>
             <td th:utext="${act.product.product_cost}" class="a-link-no-margin"></td>
-            <td th:utext="'+' + ${act.product.product_cost}*${act.count}" class="a-link-no-margin"></td>
+            <td th:utext="'+' + ${#numbers.formatDecimal(act.product.product_cost * act.count ,3,2,'COMMA')}" class="a-link-no-margin" style = "color: #38e30c"></td>
         </tr>
         </tbody>
     </table>

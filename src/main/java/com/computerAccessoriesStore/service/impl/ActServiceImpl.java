@@ -9,6 +9,7 @@ import com.computerAccessoriesStore.transfer.ActDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
@@ -66,5 +67,10 @@ public class ActServiceImpl implements ActService {
     @Override
     public List<Act> findAllBySellerId(Long id) {
         return actRepository.findAllBySellerId(id);
+    }
+
+    @Override
+    public List<Float> findSum(Long id) {
+        return actRepository.findSum(id);
     }
 }

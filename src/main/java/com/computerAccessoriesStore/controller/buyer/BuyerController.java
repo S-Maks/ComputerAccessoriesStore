@@ -71,7 +71,6 @@ public class BuyerController {
     public String shopList(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<Act> actList = actService.findAllByBuyer(buyer.getId());
-
         model.addAttribute("acts", actList);
         return "buyer/shopList";
     }

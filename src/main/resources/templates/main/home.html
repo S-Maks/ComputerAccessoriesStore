@@ -52,17 +52,20 @@
 </div>
 
 <div th:if="${#request.isUserInRole('SELLER')}">
-    <div class="container-login100">
-        <div class="wrap-login100 p-t-60 p-b-30">
+        <div class = "choice">
             <ul>
-                <li style="margin-left: 20px">
+                <li>
                     <a th:href="@{/seller/sellerRating}">
                         <div class="centerVertical centerHorizon buttonMenu">Просмотреть <br>Рейтинг</div>
                     </a>
                 </li>
+                <li>
+                    <a th:href="@{/seller/histogramSales}">
+                        <div class="centerVertical centerHorizon buttonMenu">Диаграмма <br>Продаж</div>
+                    </a>
+                </li>
             </ul>
         </div>
-    </div>
 </div>
 
 <div th:if="${#request.isUserInRole('ADMIN')}">
