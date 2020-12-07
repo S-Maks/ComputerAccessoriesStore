@@ -22,9 +22,9 @@ public class CreditCardDTO {
 
     private String month_year;
 
-    private int card_code;
+    private Float card_code;
 
-    private BigDecimal balance;
+    private Float balance;
 
     private Long idBuyer;
 }

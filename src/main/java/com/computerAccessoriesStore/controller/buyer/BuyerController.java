@@ -4,7 +4,9 @@ import com.computerAccessoriesStore.models.*;
 import com.computerAccessoriesStore.service.*;
 import com.computerAccessoriesStore.transfer.ActDTO;
 import com.computerAccessoriesStore.transfer.CommentDTO;
+import com.computerAccessoriesStore.transfer.CreditCardDTO;
 import com.computerAccessoriesStore.transfer.ProductDTO;
+import org.h2.engine.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -53,7 +55,21 @@ public class BuyerController {
 
     @PostMapping(value = "/buyProduct")
     public String buyProduct(@ModelAttribute ActDTO dto, Model model) {
-        actService.add(dto);
+        Optional<Product> product = productService.getById(dto.getIdProduct());
+        Float sum = product.get().getProduct_cost() * dto.getCount();
+        Optional<User> seller = userService.getById(dto.getIdSeller());
+        Optional<User> buyer = userService.getById(dto.getIdBuyer());
+        List<CreditCard> creditCardBuyer = creditCardService.findAllByBuyerId(buyer.get().getId());
+        List<CreditCard> creditCardSeller = creditCardService.findAllByBuyerId(seller.get().getId());
+        if(creditCardBuyer.get(0).getBalance() - sum<0){
+            return "redirect:/buyer/insufficientFunds";
+        }else {
+            creditCardBuyer.get(0).setBalance(creditCardBuyer.get(0).getBalance() - sum);
+            creditCardSeller.get(0).setBalance(creditCardSeller.get(0).getBalance() + sum);
+            creditCardService.edit(creditCardBuyer.get(0));
+            creditCardService.edit(creditCardSeller.get(0));
+            actService.add(dto);
+        }
         return "redirect:/product/showProduct";
     }
 
@@ -61,8 +77,6 @@ public class BuyerController {
     public String personalAccount(Model model) {
         User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         List<CreditCard> creditCard = creditCardService.findAllByBuyerId(buyer.getId());
-        System.out.println(creditCard.get(0).getBalance());
-
         model.addAttribute("card",creditCard.get(0).getBalance());
         model.addAttribute("buyer", buyer);
         return "buyer/personalAccount";
@@ -107,5 +121,19 @@ public class BuyerController {
         model.addAttribute("comments", comments);
         model.addAttribute("average",new java.text.DecimalFormat("0.00").format( rating.getAsDouble() ));
         return "buyer/showRating";
+    }
+
+    @GetMapping(value = "/insufficientFunds")
+    public String insufficientFunds( Model model){
+        return "buyer/insufficientFunds";
+    }
+
+    @PostMapping(value = "/insufficientFunds")
+    public String insufficientFunds(@ModelAttribute CreditCardDTO dto){
+        User buyer = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<CreditCard> creditCardBuyer = creditCardService.findAllByBuyerId(buyer.getId());
+        creditCardBuyer.get(0).setBalance(dto.getBalance() +  creditCardBuyer.get(0).getBalance());
+        creditCardService.edit(creditCardBuyer.get(0));
+        return "redirect:/product/findProduct";
     }
 }

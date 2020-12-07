@@ -566,3 +566,16 @@ a.buttonMenu:hover{
   margin: 20px 21%;
   color: white;
 }
+.textarea{
+  padding: 30px 30px;
+  width: 600px;
+  height: 150px;
+  margin: 0% 29%;
+  border-radius: 55px;
+  font-size: 18px;
+}
+.select{
+  margin-left: 48%;
+  font-size: 28px;
+  border-radius: 15px;
+}

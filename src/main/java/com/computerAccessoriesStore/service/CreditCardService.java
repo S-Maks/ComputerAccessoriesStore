@@ -16,4 +16,8 @@ public interface CreditCardService {
     Optional<CreditCard> getById(Long id);
 
     void edit(CreditCardDTO dto);
+
+    void edit(CreditCard dto);
+
+    List<CreditCard> findAllByBuyerId(Long id);
 }

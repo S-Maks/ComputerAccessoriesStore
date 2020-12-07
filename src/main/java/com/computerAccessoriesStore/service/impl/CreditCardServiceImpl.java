@@ -57,4 +57,14 @@ public class CreditCardServiceImpl implements CreditCardService {
                 .buyer(User.builder().id(dto.getId()).build()).build();
         creditCardRepository.save(creditCard);
     }
+
+    @Override
+    public void edit(CreditCard dto) {
+        creditCardRepository.save(dto);
+    }
+
+    @Override
+    public List<CreditCard> findAllByBuyerId(Long id) {
+        return creditCardRepository.findAllByBuyerId(id);
+    }
 }

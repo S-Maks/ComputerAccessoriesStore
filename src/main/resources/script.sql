@@ -45,8 +45,8 @@ create table credit_card(
   last_name VARCHAR(50) NOT NULL,
   cvv VARCHAR(5) NOT NULL ,
   month_year VARCHAR(10) NOT NULL ,
-  card_code VARCHAR(20) NOT NULL ,
-  balance money NOT NULL DEFAULT (0),
+  card_code FLOAT NOT NULL ,
+  balance FLOAT NOT NULL DEFAULT (0),
   idBuyer INT NOT NULL,
   FOREIGN KEY (idBuyer) REFERENCES Account(idUser)ON DELETE CASCADE on update CASCADE
 );
@@ -91,7 +91,14 @@ VALUES ('Балдежный продавец',5,3,2, '09-01-2020 04:05:06');
 insert into comment(message, rating, idSeller, idBuyer, created_at)
 VALUES ('Брала мышь для себя, настолько хорошая, что взяла и маме!',5,3,2,'09-01-2020 04:05:06');
 
-insert into credit_card(FIRST_NAME, LAST_NAME, CVV, MONTH_YEAR, CARD_CODE, IDBUYER)
-VALUES ('RITA','PROKHOZHAYA','123','12/23','1234567890123456',2);
+insert into credit_card(FIRST_NAME, LAST_NAME, CVV, MONTH_YEAR, CARD_CODE, IDBUYER, balance)
+VALUES ('RITA','PROKHOZHAYA','123','12/23',1234567890123456,2,100);
+
+insert into credit_card(FIRST_NAME, LAST_NAME, CVV, MONTH_YEAR, CARD_CODE, IDBUYER, balance)
+VALUES ('MISHA','PASHKEVICH','312','12/23',1548121839498494,3,34);
+
+insert into credit_card(FIRST_NAME, LAST_NAME, CVV, MONTH_YEAR, CARD_CODE, IDBUYER, balance)
+VALUES ('ADMIN','ADMIN','000','01/24',0101010101010101,1,500);
 
 drop table account, product, act, comment, credit_card;
+drop table credit_card;

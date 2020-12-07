@@ -40,7 +40,7 @@
             <td th:utext="${buyer.lastName}" class="a-link-no-margin"></td>
             <td th:utext="${buyer.username}" class="a-link-no-margin"></td>
             <td th:utext="${buyer.email}" class="a-link-no-margin"></td>
-            <td th:utext="${card}" class="a-link-no-margin"></td>
+            <td th:utext="${#numbers.formatDecimal(card ,1,2,'COMMA')}" class="a-link-no-margin"></td>
             <td class="a-link-no-margin"><a th:href="@{/buyer/shopList}"><img th:src="@{/img/buy.png}" class="crash-bin"></a></td>
         </tr>
         </tbody>

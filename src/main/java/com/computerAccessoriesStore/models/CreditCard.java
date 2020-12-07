@@ -30,9 +30,9 @@ public class CreditCard {
 
     private String month_year;
 
-    private int card_code;
+    private Float card_code;
 
-    private BigDecimal balance;
+    private Float balance;
 
     @ManyToOne
     @JoinColumn(name = "idbuyer")
