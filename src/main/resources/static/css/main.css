@@ -1,10 +1,3 @@
-
-* {
-	margin: 0px; 
-	padding-left: 20px;
-	box-sizing: border-box;
-}
-
 body, html {
 	height: 100%;
 }
@@ -24,12 +17,6 @@ a {
 a:focus {
 	outline: none !important;
 }
-
-a:hover {
-	text-decoration: none;
-  color: #cccccc;
-}
-
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
@@ -103,7 +90,7 @@ iframe {
 [ Utility ]*/
 .txt1 {
   font-size: 18px;
-  color: #cccccc;
+  color: #666666;
   line-height: 1.4;
   font-weight: bold;
 }
@@ -123,12 +110,7 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
-
-  background: #005bea;
-  background: -webkit-linear-gradient(bottom, #005bea, #00c6fb);
-  background: -o-linear-gradient(bottom, #005bea, #00c6fb);
-  background: -moz-linear-gradient(bottom, #005bea, #00c6fb);
-  background: linear-gradient(bottom, #005bea, #00c6fb);
+  background: #fdfdfd;
 }
 
 .container-login100 {
@@ -228,14 +210,16 @@ iframe {
   height: 50px;
   border-radius: 25px;
   padding: 0 30px 0 53px;
+  border: 2px solid #000;
 }
 
 .buttonMenu{
   font-size: 18px;
   height: 50px;
   width: 160px;
-  background: #fff;
   border-radius: 25px;
+  border: 2px solid #000;
+  background-color: cornsilk;
 }
 .buttonAuth{
   font-size: 18px;
@@ -245,8 +229,10 @@ iframe {
   border-radius: 25px;
 }
 
-a.buttonMenu:hover{
-  background:#cccccc;
+a:hover{
+  transform: scale(1.1);
+  transition: 300ms;
+  color: #cccccc;
 }
 .centerHorizon{
   text-align: center;
@@ -510,12 +496,6 @@ a.buttonMenu:hover{
   opacity: 1;
 }
 
-@media (max-width: 992px) {
-  .alert-validate::before {
-    visibility: visible;
-    opacity: 1;
-  }
-}
 
 /*//////////////////////////////////////////////////////////////////
 [ responsive ]*/
@@ -573,9 +553,18 @@ a.buttonMenu:hover{
   margin: 0% 29%;
   border-radius: 55px;
   font-size: 18px;
+  border: 2px solid #000;
 }
 .select{
   margin-left: 48%;
   font-size: 28px;
   border-radius: 15px;
+}
+.account-bin{
+  width: 70px;
+  height: auto;
+}
+.account-bin:hover{
+  transform: scale(0.9);
+  transition: 300ms;
 }

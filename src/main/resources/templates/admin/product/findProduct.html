@@ -9,16 +9,19 @@
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
 </head>
 <body class="limiter">
-<div class="container">
-    <div class="navbar">
-        <a class="a-link-margin" th:href="@{/} ">На главную</a>
-        <ul class="p-l-500">
-            <li><a class="a-link-margin" th:href="@{/logout}">
-                Выход
-            </a></li>
-        </ul>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
     </div>
-</div>
+</header>
 
 <div class="text-center">
     <form th:action="@{/product/findProduct}" method="get">
@@ -32,7 +35,7 @@
 
         <div th:if="${not #lists.isEmpty(result)}">
             <div class="table-container-product">
-                <table>
+                <table style="border: 2px solid #999999;">
                     <thead>
                     <tr>
                         <th class="a-link-no-margin">Id</th>
@@ -40,6 +43,9 @@
                         <th class="a-link-no-margin">Цена</th>
                         <th class="a-link-no-margin">Имя пользователя продавца</th>
                         <th class="a-link-no-margin"></th>
+                        <div th:if="${#request.isUserInRole('ADMIN')}">
+                            <th class="a-link-no-margin"></th>
+                        </div>
                     </tr>
                     </thead>
                     <tbody>

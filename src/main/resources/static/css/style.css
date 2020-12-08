@@ -28,7 +28,7 @@ button {
 padding-top: 20px;
 }
 .margin-five {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .margin-bottom-five {
@@ -95,12 +95,6 @@ padding-top: 20px;
     -webkit-text-stroke-color: white;
 }
 
-a:hover {
-    color: #1c9f8a;
-    border-bottom-color: #1c9f8a;
-    transition: 500ms;
-}
-
 li {
     font-size: 1.1rem;
     /*font-weight: 600;*/
@@ -142,7 +136,7 @@ a {
     font-size: 18px;
 }
 .table-container-user{
-    padding-left: 4%;
+    padding-left: 14%;
     font-size: 18px;
 }
 .table-container-act{
@@ -150,8 +144,9 @@ a {
     font-size: 18px;
 }
 .table-container-product{
-    padding-left: 15%;
+    padding-left: 27%;
     font-size: 18px;
+
 }
 .addProduct{
     padding-left: 44%;
@@ -191,9 +186,10 @@ table{
     border-radius: 25px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    border: 2px solid #000;
 }
 .crash-bin{
-    width: 55px;
+    width: 40px;
     height: 35px;
 }
 .crash-bin:hover{
@@ -201,10 +197,23 @@ table{
     transition: 300ms;
 }
 .lock{
-    width: 50px;
+    width: 40px;
     height: 35px;
 }
 .lock:hover{
     transform: scale(0.9);
     transition: 300ms;
+}
+.start{
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    padding-left: 25%;
+}
+.add{
+    padding-left: 39%;
+}
+.table-container-addProduct {
+    padding: 2% 26%;
+    font-size: 18px;
 }

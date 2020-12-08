@@ -11,11 +11,12 @@
 <body class="limiter">
     <div class="container">
         <div class="navbar">
-            <a class="a-link-margin" th:href="@{/} ">На главную</a>
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
         </div>
     </div>
     <div class="container-login100">
-        <div class="wrap-login100 p-t-190 p-b-30">
+        <div class="wrap-login100 p-b-30">
             <form class="login100-form validate-form" th:action="@{/signUp}" method="post">
 
                 <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">

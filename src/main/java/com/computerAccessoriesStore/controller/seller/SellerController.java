@@ -1,13 +1,7 @@
 package com.computerAccessoriesStore.controller.seller;
 
-import com.computerAccessoriesStore.models.Act;
-import com.computerAccessoriesStore.models.Comment;
-import com.computerAccessoriesStore.models.Product;
-import com.computerAccessoriesStore.models.User;
-import com.computerAccessoriesStore.service.ActService;
-import com.computerAccessoriesStore.service.CommentService;
-import com.computerAccessoriesStore.service.ProductService;
-import com.computerAccessoriesStore.service.UserService;
+import com.computerAccessoriesStore.models.*;
+import com.computerAccessoriesStore.service.*;
 import com.computerAccessoriesStore.transfer.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,9 +32,14 @@ public class SellerController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private CreditCardService creditCardService;
+
     @GetMapping(value = "/personalAccount")
     public String personalAccount(Model model) {
         User seller = userService.getUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<CreditCard> creditCard = creditCardService.findAllByBuyerId(seller.getId());
+        model.addAttribute("card",creditCard.get(0).getBalance());
         model.addAttribute("seller", seller);
         return "seller/personalAccount";
     }

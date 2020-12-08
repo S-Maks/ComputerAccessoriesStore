@@ -12,11 +12,12 @@
 <div >
     <div class="container">
         <div class="navbar">
-                <a class="a-link-margin" th:href="@{/} ">На главную</a>
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
         </div>
     </div>
     <div class="container-login100">
-        <div class="wrap-login100 p-t-60 p-b-30">
+        <div class="wrap-login100 p-t-60 p-b-30 p-l-60">
             <div th:if = "${param.error}" class="incorrect">
                 Неправильное Имя пользователя или Пароль
             </div>

@@ -9,16 +9,19 @@
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
 </head>
 <body class="limiter">
-<div class="container">
-    <div class="navbar">
-        <a class="a-link-margin" th:href="@{/} ">На главную</a>
-        <ul class="p-l-500">
-            <li><a class="a-link-margin" th:href="@{/logout}">
-                Выход
-            </a></li>
-        </ul>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
     </div>
-</div>
+</header>
 
 
 <form class="box" action="#" th:action="@{/admin/editProduct}" th:object="${product}" method="post">

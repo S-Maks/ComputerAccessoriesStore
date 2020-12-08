@@ -12,10 +12,11 @@
 <header>
     <div class="container">
         <div class="navbar">
-            <a class="a-link-margin" th:href="@{/}">На главную</a>
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
             <ul class="p-l-500">
-                <li><a class="a-link-margin" th:href="@{/logout}">
-                    Выход
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
                 </a></li>
             </ul>
         </div>
@@ -41,7 +42,7 @@
             <td th:utext="${seller.lastName}" class="a-link-no-margin"></td>
             <td th:utext="${seller.username}" class="a-link-no-margin"></td>
             <td th:utext="${seller.email}" class="a-link-no-margin"></td>
-            <td th:utext="${#numbers.formatDecimal(card ,3,2,'COMMA')}" class="a-link-no-margin"></td>
+            <td th:utext="${#numbers.formatDecimal(card ,1,2,'COMMA')}" class="a-link-no-margin"></td>
             <td class="a-link-no-margin"><a th:href="@{/seller/listProduct}"><img th:src="@{/img/buy.png}" class="crash-bin"></a></td>
             <td class="a-link-no-margin"><a th:href="@{/seller/shopList}"><img th:src="@{/img/buy.png}" class="crash-bin"></a></td>
         </tr>
