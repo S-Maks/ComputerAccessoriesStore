@@ -13,7 +13,7 @@ create table product(
   product_cost FLOAT NOT NULL ,
   product_name VARCHAR(50) NOT NULL ,
   idSeller INT NOT NULL ,
-  FOREIGN KEY (idSeller) references Account(idUser)
+  FOREIGN KEY (idSeller) references Account(idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table act(
@@ -23,9 +23,9 @@ create table act(
     idBuyer INT NOT NULL,
     idProduct INT NOT NULL,
     created_at DATE NOT NULL,
-    FOREIGN KEY (idSeller) REFERENCES Account(idUser),
-    FOREIGN KEY (idBuyer) REFERENCES Account(idUser),
-    FOREIGN KEY (idProduct) REFERENCES product(idProduct)
+    FOREIGN KEY (idSeller) REFERENCES Account(idUser) ON DELETE CASCADE ON UPDATE CASCADE ,
+    FOREIGN KEY (idBuyer) REFERENCES Account(idUser) ON DELETE CASCADE ON UPDATE CASCADE ,
+    FOREIGN KEY (idProduct) REFERENCES product(idProduct) ON UPDATE CASCADE ON UPDATE CASCADE
 );
 
 create table comment(
@@ -35,8 +35,8 @@ create table comment(
     created_at timestamp NOT NULL,
     idSeller INT NOT NULL,
     idBuyer INT NOT NULL,
-    FOREIGN KEY (idSeller) REFERENCES Account(idUser),
-    FOREIGN KEY (idBuyer) REFERENCES Account(idUser)
+    FOREIGN KEY (idSeller) REFERENCES Account(idUser) ON DELETE CASCADE ON UPDATE CASCADE ,
+    FOREIGN KEY (idBuyer) REFERENCES Account(idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table credit_card(
@@ -48,7 +48,7 @@ create table credit_card(
   card_code FLOAT NOT NULL ,
   balance FLOAT NOT NULL DEFAULT (0),
   idBuyer INT NOT NULL,
-  FOREIGN KEY (idBuyer) REFERENCES Account(idUser)
+  FOREIGN KEY (idBuyer) REFERENCES Account(idUser) ON DELETE CASCADE
 );
 
 

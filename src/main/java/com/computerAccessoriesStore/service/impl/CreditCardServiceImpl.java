@@ -30,7 +30,7 @@ public class CreditCardServiceImpl implements CreditCardService {
                 .balance(dto.getBalance())
                 .cvv(dto.getCvv())
                 .month_year(dto.getMonth_year())
-                .buyer(User.builder().id(dto.getId()).build()).build();
+                .buyer(User.builder().id(dto.getIdBuyer()).build()).build();
         creditCardRepository.save(creditCard);
     }
 

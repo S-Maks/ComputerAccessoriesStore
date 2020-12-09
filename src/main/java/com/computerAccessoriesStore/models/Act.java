@@ -17,7 +17,7 @@ import java.sql.Date;
 public class Act {
     @Id
     @Column(name = "idact")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Long count;
